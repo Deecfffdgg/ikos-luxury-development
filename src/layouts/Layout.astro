@@ -1,0 +1,256 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title, 
+  description = "IKOS Luxury Developments — Curators of elite architectural masterworks, custom estate pavilions, and warm-linen residential legacies." 
+} = Astro.props;
+
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth bg-linen text-obsidian selection:bg-bronze selection:text-obsidian">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <ViewTransitions />
+
+    <!-- Google Translate Initialization -->
+    <script is:inline type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+      }
+    </script>
+    <script is:inline type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Custom CSS to override Google Translate UI artifacts -->
+    <style is:global>
+      /* Load Tailwind directives first so utilities are compiled correctly */
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+
+      /* Global Theme Base Styling: Solid luxury warm off-white/cream background (#F9F6F0) and dark text (#121212) */
+      body {
+        background-color: #F9F6F0 !important;
+        color: #121212 !important;
+        font-family: 'Montserrat', sans-serif;
+        top: 0 !important;
+      }
+
+      h1, h2, h3, h4, .font-serif {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+      }
+
+      /* Custom scrollbar matching luxury light theme */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #F9F6F0;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #D4AF37;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #9A7B1C;
+      }
+
+      /* Google Translate Override Styling */
+      .goog-logo-link, 
+      .goog-te-gadget span, 
+      .goog-te-banner-frame,
+      .goog-te-banner,
+      #goog-gt-tt {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      
+      iframe.skiptranslate, 
+      .goog-te-banner-frame {
+        display: none !important;
+        visibility: hidden !important;
+      }
+
+      .goog-te-gadget {
+        color: transparent !important;
+        font-size: 0 !important;
+      }
+
+      /* Premium Dropdown Styling for Custom Translation Widget */
+      #google_translate_element {
+        display: inline-block !important;
+      }
+      #google_translate_element .skiptranslate {
+        display: inline-block !important;
+        visibility: visible !important;
+      }
+      .goog-te-combo {
+        background-color: #F9F6F0 !important;
+        color: #121212 !important;
+        border: 1px solid rgba(212, 175, 55, 0.3) !important;
+        padding: 4px 10px !important;
+        border-radius: 9999px !important;
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 10px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.1em !important;
+        outline: none !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+      }
+      .goog-te-combo:hover {
+        border-color: #D4AF37 !important;
+        color: #D4AF37 !important;
+      }
+
+      /* Prevent Google Translate from shifting layout */
+      body {
+        top: 0 !important;
+        position: static !important;
+      }
+      
+      /* Style elements that google translate injects on hover */
+      .goog-text-highlight {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        box-shadow: 0 1px 0 #D4AF37 !important;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col relative overflow-x-hidden bg-linen text-obsidian">
+    
+    <!-- Global Custom Header - Centered Typographic Branding and Navigation (Light Luxury) -->
+    <header class="w-full py-8 bg-linen/90 backdrop-blur-md border-b border-bronze/10 transition-all duration-300 relative" id="site-header">
+      
+      <!-- Top-Right Language and Translation Hub -->
+      <div class="absolute top-6 right-6 lg:right-12 flex flex-col sm:flex-row items-center sm:space-x-4 space-y-2 sm:space-y-0 z-30">
+        <!-- Google Translate Widget Container -->
+        <div id="google_translate_element" class="text-xs"></div>
+        
+        <!-- Custom Micro switcher -->
+        <div class="flex items-center space-x-2 text-[9px] tracking-widest text-obsidian/60 font-sans" id="lang-switcher">
+          <button data-lang="en" class="hover:text-bronze-dark transition-colors duration-300 focus:outline-none font-medium px-1">EN</button>
+          <span class="text-bronze/30 text-[8px]">|</span>
+          <button data-lang="fr" class="hover:text-bronze-dark transition-colors duration-300 focus:outline-none font-medium px-1">FR</button>
+          <span class="text-bronze/30 text-[8px]">|</span>
+          <button data-lang="de" class="hover:text-bronze-dark transition-colors duration-300 focus:outline-none font-medium px-1">DE</button>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col items-center space-y-6">
+        
+        <!-- Center Logo & SVG Emblem -->
+        <a href="/" class="flex flex-col items-center group text-center select-none">
+          <!-- Split-Circle Inline SVG Emblem -->
+          <svg class="w-12 h-12 text-obsidian max-w-16 max-h-16 hover:text-bronze-dark transition-colors duration-500 mb-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <title>IKOS Emblem</title>
+            <path d="M 5.55 43 A 45 45 0 0 1 94.45 43 L 77.11 43 A 28 28 0 0 0 22.89 43 Z" fill="currentColor" />
+            <path d="M 94.45 57 A 45 45 0 0 1 5.55 57 L 22.89 57 A 28 28 0 0 0 77.11 57 Z" fill="currentColor" />
+          </svg>
+          
+          <span class="text-xs md:text-sm lg:text-base font-serif text-obsidian tracking-[0.35em] font-medium block transition-colors duration-300 group-hover:text-bronze-dark animate-fade-in">
+            IKOS LUXURY DEVELOPMENTS
+          </span>
+        </a>
+
+        <!-- Center: Desktop Navigation with Dynamic Active Highlighting -->
+        <nav class="flex flex-wrap items-center justify-center gap-x-6 md:gap-x-10 gap-y-2 text-[10px] md:text-xs uppercase tracking-[0.2em] text-obsidian/75">
+          <a href="/" class={`hover:text-bronze-dark transition-colors duration-300 font-medium ${pathname === "/" ? "font-semibold border-b border-obsidian/20 pb-0.5 text-bronze-dark" : ""}`}>Home</a>
+          <a href="/history" class={`hover:text-bronze-dark transition-colors duration-300 font-medium ${pathname.startsWith("/history") ? "font-semibold border-b border-obsidian/20 pb-0.5 text-bronze-dark" : ""}`}>History</a>
+          <a href="/services" class={`hover:text-bronze-dark transition-colors duration-300 font-medium ${pathname.startsWith("/services") ? "font-semibold border-b border-obsidian/20 pb-0.5 text-bronze-dark" : ""}`}>Services</a>
+          <a href="/team" class={`hover:text-bronze-dark transition-colors duration-300 font-medium ${pathname.startsWith("/team") ? "font-semibold border-b border-obsidian/20 pb-0.5 text-bronze-dark" : ""}`}>Team</a>
+          <a href="/gallery" class={`hover:text-bronze-dark transition-colors duration-300 font-medium ${pathname.startsWith("/gallery") ? "font-semibold border-b border-obsidian/20 pb-0.5 text-bronze-dark" : ""}`}>Gallery</a>
+          <a href="/inquire" class={`hover:text-bronze-dark transition-colors duration-300 font-medium ${pathname.startsWith("/inquire") ? "font-semibold border-b border-obsidian/20 pb-0.5 text-bronze-dark" : ""}`}>Inquire</a>
+        </nav>
+
+      </div>
+    </header>
+
+    <main id="main-content" class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Global Custom Footer (Warm Linen & Obsidian Theme) -->
+    <footer class="bg-linen border-t border-bronze/10 py-16 px-6 lg:px-12 text-obsidian">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="md:col-span-2 flex flex-col space-y-6">
+          <a href="/" class="flex flex-col tracking-widest">
+            <span class="text-2xl font-serif text-obsidian tracking-epic font-semibold">IKOS</span>
+            <span class="text-[9px] uppercase text-bronze-dark tracking-widest -mt-1 font-medium">LUXURY DEVELOPMENTS</span>
+          </a>
+          <p class="text-obsidian/60 text-xs leading-relaxed max-w-sm">
+            Architectural curators designing bespoke residential monuments and estate pavilions throughout Western Canada. Bridging organic structures with structural glass clarity.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-xs uppercase tracking-widest text-bronze-dark font-semibold mb-6">Masterworks</h4>
+          <ul class="space-y-3 text-xs text-obsidian/60">
+            <li><a href="/projects/glass-pavilion" class="hover:text-bronze-dark transition-colors duration-300">The Glass Pavilion</a></li>
+            <li><a href="/projects/minimalist-concrete" class="hover:text-bronze-dark transition-colors duration-300">The Minimalist Monolith</a></li>
+            <li><a href="/projects/obsidian-suite" class="hover:text-bronze-dark transition-colors duration-300">The Obsidian Suite</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs uppercase tracking-widest text-bronze-dark font-semibold mb-6">Contact & Studio</h4>
+          <ul class="space-y-3 text-xs text-obsidian/60">
+            <li>Suite 213, 315 – 8th Avenue SW</li>
+            <li>Calgary, Alberta, T2P 4K1</li>
+            <li><span class="text-bronze-dark font-semibold">Phone:</span> 403-630-9346</li>
+            <li><span class="text-bronze-dark font-semibold">Email:</span> info@ikosluxurydevelopments.com</li>
+            <li>By appointment only.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="max-w-7xl mx-auto border-t border-bronze/10 mt-16 pt-8 flex flex-col sm:flex-row items-center justify-between text-[10px] uppercase tracking-widest text-obsidian/40">
+        <p>&copy; {new Date().getFullYear()} IKOS Luxury Developments. All Rights Reserved.</p>
+        <p class="mt-4 sm:mt-0 flex space-x-6">
+          <a href="#" class="hover:text-bronze-dark transition-colors duration-300">Privacy Policy</a>
+          <a href="#" class="hover:text-bronze-dark transition-colors duration-300">Terms of Registry</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Interactive Navigation and Google Translate Logic -->
+    <script is:inline>
+      document.addEventListener('astro:page-load', () => {
+        // Trigger Google Translate Programmatically from Custom Buttons
+        const langItems = document.querySelectorAll('[data-lang]');
+        langItems.forEach(item => {
+          item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const langCode = item.getAttribute('data-lang');
+            
+            // Programmatically change language in Google Translate combobox
+            const translateSelect = document.querySelector('.goog-te-combo');
+            if (translateSelect) {
+              translateSelect.value = langCode;
+              translateSelect.dispatchEvent(new Event('change'));
+            } else {
+              console.warn('Google Translate element is not fully loaded yet.');
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

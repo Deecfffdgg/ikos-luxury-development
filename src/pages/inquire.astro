@@ -1,0 +1,376 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getTestimonials } from '../lib/cms';
+
+const testimonials = await getTestimonials();
+const inquireHero = "https://ikosluxurydevelopments.com/wp-content/uploads/2025/01/IKOS-ContactUs2-1-WMK.jpg";
+---
+
+<Layout title="Begin An Inquiry — IKOS Luxury Developments" description="Initiate your private commission registry files. We accept only three structural estate commissions annually in Calgary, Alberta.">
+  
+  <!-- HERO SECTION (Light Luxury Style) -->
+  <section class="relative w-full h-[45vh] overflow-hidden flex items-end bg-linen border-b border-bronze/10">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src={inquireHero} 
+        alt="IKOS Private Client Consultation Suite" 
+        class="w-full h-full object-cover opacity-15" 
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-linen via-transparent to-transparent"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full pb-12">
+      <div class="flex items-center space-x-3 mb-3">
+        <span class="w-8 h-px bg-bronze-dark max-w-8"></span>
+        <span class="text-[10px] uppercase tracking-epic text-bronze-dark font-semibold">PRIVATE CLIENT REGISTRY</span>
+      </div>
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-serif text-obsidian tracking-tight uppercase">Begin A Commission</h1>
+    </div>
+  </section>
+
+  <!-- FORM & CALCULATOR SECTION -->
+  <section class="py-20 bg-linen relative max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- Left Column: Interactive Calculator & Copy -->
+      <div class="lg:col-span-7 space-y-8">
+        <div class="max-w-xl">
+          <span class="text-[10px] uppercase tracking-widest text-bronze-dark block font-semibold mb-2">01 — ESTIMATION SCOPE</span>
+          <h2 class="text-2xl md:text-3xl font-serif text-obsidian tracking-tight uppercase">Interactive Commission Scaling</h2>
+          <p class="text-sm text-obsidian/70 leading-relaxed font-sans font-light mt-2">
+            Due to our uncompromising dedication to material craftsmanship and deep structural detailing, IKOS accepts only three major residential estate commissions annually. Use our scaling engine to scope your project variables.
+          </p>
+        </div>
+
+        <!-- INVESTMENT & SCOPE CALCULATOR BLOCK (Interactive Token - Light Theme) -->
+        <div class="bg-white border border-bronze/20 p-6 md:p-8 shadow-sm">
+          <span class="text-[10px] uppercase tracking-epic text-bronze-dark block mb-6 font-semibold">INTERACTIVE SCALING MATRIX</span>
+          
+          <div class="space-y-4">
+            
+            <!-- Scale Selector -->
+            <div>
+              <label class="block text-[10px] uppercase tracking-widest text-obsidian/60 mb-1.5 font-semibold">Sanctuary Acreage Scale</label>
+              <select id="calc-scale" class="w-full bg-linen border border-bronze/20 text-xs tracking-widest text-obsidian p-3 focus:outline-none focus:border-bronze-dark rounded-none">
+                <option value="premium">2 - 5 Acres (Springbank Estate Plot)</option>
+                <option value="estate" selected>5 - 10 Acres (Elbow Valley Estate Zone)</option>
+                <option value="monolith">10+ Acres (Mountain Ridge Wilderness Sanctuary)</option>
+              </select>
+            </div>
+
+            <!-- Material Finishes Selector -->
+            <div>
+              <label class="block text-[10px] uppercase tracking-widest text-obsidian/60 mb-1.5 font-semibold">Curated Material Finish Palette</label>
+              <select id="calc-materials" class="w-full bg-linen border border-bronze/20 text-xs tracking-widest text-obsidian p-3 focus:outline-none focus:border-bronze-dark rounded-none">
+                <option value="executive">Executive Travertine & Cantilevered Concrete</option>
+                <option value="artisanal" selected>Artisanal Shou Sugi Ban Cedar & Hand-Rubbed Bronze</option>
+                <option value="imperial">Imperial Obsidian Concrete & Bookmatched Calacatta Marble</option>
+              </select>
+            </div>
+
+            <!-- Architectural Scale -->
+            <div>
+              <label class="block text-[10px] uppercase tracking-widest text-obsidian/60 mb-1.5 font-semibold">Desired House Footprint Scale</label>
+              <select id="calc-footprint" class="w-full bg-linen border border-bronze/20 text-xs tracking-widest text-obsidian p-3 focus:outline-none focus:border-bronze-dark rounded-none">
+                <option value="pavilion">Acreage Pavilion (6,000 - 9,000 sq ft)</option>
+                <option value="grand" selected>Grand Legacy Monument (10,000 - 15,000 sq ft)</option>
+                <option value="imperial-sky">Imperial Sky-Estate (15,000+ sq ft)</option>
+              </select>
+            </div>
+
+            <!-- Dynamic Consult Tier Summary Block -->
+            <div class="bg-linen border border-bronze/10 p-5 mt-6">
+              <span class="text-[9px] uppercase tracking-widest text-bronze-dark block mb-2 font-semibold">ARCHITECTURAL RECONNAISSANCE REPORT</span>
+              
+              <div class="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-bronze/10">
+                <div>
+                  <span class="text-[8px] uppercase tracking-widest text-obsidian/40 block font-semibold">Design Tier Rec</span>
+                  <span id="tier-rec" class="text-xs font-serif italic text-bronze-dark font-semibold">Curated Sanctuary</span>
+                </div>
+                <div>
+                  <span class="text-[8px] uppercase tracking-widest text-obsidian/40 block font-semibold">Timeline Scope</span>
+                  <span id="timeline-scope" class="text-xs text-obsidian/90 font-semibold font-sans">18 - 24 Months</span>
+                </div>
+              </div>
+
+              <div>
+                <span class="text-[8px] uppercase tracking-widest text-obsidian/40 block mb-1 font-semibold">Tailored Consult Summary</span>
+                <p id="calc-summary" class="text-xs text-obsidian/70 leading-relaxed font-sans font-light">
+                  Loading specification summary parameters...
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Bespoke Intake Form -->
+      <div class="lg:col-span-5 bg-white border border-bronze/10 p-6 md:p-8 shadow-sm relative">
+        <div class="absolute top-0 right-0 w-8 h-8 border-t border-r border-bronze/20"></div>
+        <div class="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-bronze/20"></div>
+        
+        <h3 class="text-xl font-serif text-obsidian mb-6 font-semibold uppercase">Commission Registry</h3>
+        
+        <!-- Netlify Forms Enabled Container -->
+        <form 
+          name="ikos-inquiry" 
+          method="POST" 
+          data-netlify="true"
+          class="space-y-4"
+          action="/success"
+        >
+          <input type="hidden" name="form-name" value="ikos-inquiry" />
+          
+          <!-- Selected Calculator Token State to submit along with form -->
+          <input type="hidden" name="selected_acreage" id="form-acreage" value="" />
+          <input type="hidden" name="selected_finish" id="form-finish" value="" />
+          <input type="hidden" name="selected_footprint" id="form-footprint" value="" />
+
+          <div>
+            <label for="name" class="block text-[10px] uppercase tracking-widest text-obsidian/60 mb-1.5 font-semibold">Full Legal Name *</label>
+            <input 
+              type="text" 
+              name="name" 
+              id="name" 
+              required 
+              class="w-full bg-linen border border-bronze/20 text-sm p-3 focus:outline-none focus:border-bronze-dark rounded-none text-obsidian placeholder-obsidian/30 font-sans" 
+              placeholder="e.g. Sterling Thorne"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-[10px] uppercase tracking-widest text-obsidian/60 mb-1.5 font-semibold">Email Coordinates *</label>
+            <input 
+              type="email" 
+              name="email" 
+              id="email" 
+              required 
+              class="w-full bg-linen border border-bronze/20 text-sm p-3 focus:outline-none focus:border-bronze-dark rounded-none text-obsidian placeholder-obsidian/30 font-sans" 
+              placeholder="e.g. sterling@executive.com"
+            />
+          </div>
+
+          <div>
+            <label for="budget_tier" class="block text-[10px] uppercase tracking-widest text-obsidian/60 mb-1.5 font-semibold font-sans">Investment Budget Tier *</label>
+            <select 
+              name="budget_tier" 
+              id="budget_tier" 
+              required 
+              class="w-full bg-linen border border-bronze/20 text-xs tracking-widest text-obsidian p-3 focus:outline-none focus:border-bronze-dark rounded-none"
+            >
+              <option value="5m-10m">$5,000,000 - $10,000,000</option>
+              <option value="10m-20m" selected>$10,000,000 - $20,000,000</option>
+              <option value="20m-plus">$20,000,000 +</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="architectural_intent" class="block text-[10px] uppercase tracking-widest text-obsidian/60 mb-1.5 font-semibold font-sans">Architectural Intent & Scope *</label>
+            <textarea 
+              name="architectural_intent" 
+              id="architectural_intent" 
+              rows="4" 
+              required
+              class="w-full bg-linen border border-bronze/20 text-sm p-3 focus:outline-none focus:border-bronze-dark rounded-none text-obsidian placeholder-obsidian/30 font-sans" 
+              placeholder="Detail your landscape desires, preferred materials, and spatial layout expectations..."
+            ></textarea>
+          </div>
+
+          <div class="pt-4">
+            <button 
+              type="submit" 
+              class="w-full bg-obsidian hover:bg-bronze-dark text-linen hover:text-obsidian font-semibold py-4 text-xs uppercase tracking-widest transition-all duration-300 shadow-sm rounded-full"
+            >
+              Submit Commission Application
+            </button>
+            <p class="text-[8px] uppercase tracking-widest text-obsidian/40 text-center mt-3 leading-relaxed font-sans">
+              We hold all digital records and design details in absolute discretion.
+            </p>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SLIDER SECTION (Light Theme) -->
+  <section class="py-20 bg-white border-t border-bronze/10 relative">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+      
+      <div class="max-w-2xl mb-12">
+        <span class="text-[10px] uppercase tracking-epic text-bronze-dark mb-2 block font-semibold">ORAL HISTORIES & COMMISSIONS</span>
+        <h2 class="text-2xl md:text-4xl font-serif text-obsidian tracking-tight uppercase">Client Legacies</h2>
+      </div>
+
+      <!-- Testimonial Slider Container -->
+      <div class="relative min-h-[350px] flex flex-col justify-between">
+        
+        <!-- Slider Cards Frame -->
+        <div class="overflow-hidden relative w-full" id="testimonial-slider">
+          <div class="flex transition-transform duration-700 ease-out" id="testimonial-track">
+            {testimonials.map((t) => (
+              <div class="w-full flex-shrink-0 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start px-2">
+                
+                <!-- Quote -->
+                <div class="lg:col-span-8 flex flex-col justify-center">
+                  <span class="text-6xl font-serif text-bronze/20 leading-none -mb-6 pointer-events-none">&ldquo;</span>
+                  <blockquote class="text-xl md:text-3xl font-serif italic font-light text-obsidian leading-relaxed tracking-wide pr-6">
+                    {t.quote}
+                  </blockquote>
+                </div>
+
+                <!-- Metadata Card -->
+                <div class="lg:col-span-4 bg-linen border border-bronze/20 p-6 flex flex-col justify-between h-full lg:translate-y-4">
+                  <div>
+                    <span class="text-[9px] uppercase tracking-epic text-bronze-dark block mb-2 font-semibold">PATRON OF RECORD</span>
+                    <h4 class="text-lg font-serif text-obsidian font-semibold">{t.author}</h4>
+                    <p class="text-[9px] uppercase tracking-widest text-obsidian/45 font-semibold">{t.location.split(' — ')[1]}</p>
+                  </div>
+                  <div class="border-t border-bronze/10 pt-4 mt-6">
+                    <span class="text-[9px] uppercase tracking-widest text-bronze-dark block mb-1">STRUCTURE REFERENCE</span>
+                    <p class="text-xs text-obsidian/70 font-serif italic">{t.projectScale}</p>
+                    <p class="text-[9px] uppercase tracking-widest text-obsidian/40 mt-1">{t.location.split(' — ')[0]}</p>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Slider controls -->
+        <div class="flex items-center justify-between border-t border-bronze/15 pt-6 mt-8">
+          <div class="text-[10px] uppercase tracking-widest text-obsidian/40 flex items-center space-x-2 font-semibold">
+            <span class="text-bronze-dark" id="slider-active-num">01</span>
+            <span>/</span>
+            <span>0{testimonials.length}</span>
+          </div>
+
+          <div class="flex items-center space-x-4">
+            <!-- Bound SVG arrows absolute sizing -->
+            <button class="w-10 h-10 flex items-center justify-center border border-bronze/20 hover:border-bronze-dark hover:bg-obsidian hover:text-linen text-bronze-dark transition-all duration-300 focus:outline-none rounded-full" id="slider-prev-btn" aria-label="Previous Testimonial">
+              <svg class="w-4 h-4 max-w-5 max-h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button class="w-10 h-10 flex items-center justify-center border border-bronze/20 hover:border-bronze-dark hover:bg-obsidian hover:text-linen text-bronze-dark transition-all duration-300 focus:outline-none rounded-full" id="slider-next-btn" aria-label="Next Testimonial">
+              <svg class="w-4 h-4 max-w-5 max-h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive script for Slider & Calculator -->
+  <script is:inline>
+    document.addEventListener('astro:page-load', () => {
+      
+      // 1. Slider logic
+      const track = document.getElementById('testimonial-track');
+      const prevBtn = document.getElementById('slider-prev-btn');
+      const nextBtn = document.getElementById('slider-next-btn');
+      const activeNum = document.getElementById('slider-active-num');
+      
+      if (track && prevBtn && nextBtn) {
+        const slides = Array.from(track.children);
+        let currentIndex = 0;
+        
+        const updateSlider = (index) => {
+          track.style.transform = `translateX(-${index * 100}%)`;
+          activeNum.textContent = `0${index + 1}`;
+          currentIndex = index;
+        };
+        
+        prevBtn.addEventListener('click', () => {
+          let targetIndex = currentIndex - 1;
+          if (targetIndex < 0) targetIndex = slides.length - 1;
+          updateSlider(targetIndex);
+        });
+        
+        nextBtn.addEventListener('click', () => {
+          let targetIndex = currentIndex + 1;
+          if (targetIndex >= slides.length) targetIndex = 0;
+          updateSlider(targetIndex);
+        });
+
+        updateSlider(0);
+      }
+
+      // 2. Calculator logic
+      const scaleSelect = document.getElementById('calc-scale');
+      const materialsSelect = document.getElementById('calc-materials');
+      const footprintSelect = document.getElementById('calc-footprint');
+      
+      const tierRec = document.getElementById('tier-rec');
+      const timelineScope = document.getElementById('timeline-scope');
+      const summaryText = document.getElementById('calc-summary');
+      
+      const formAcreage = document.getElementById('form-acreage');
+      const formFinish = document.getElementById('form-finish');
+      const formFootprint = document.getElementById('form-footprint');
+
+      if (scaleSelect && materialsSelect && footprintSelect) {
+        
+        const recalculateScope = () => {
+          const scale = scaleSelect.value;
+          const materials = materialsSelect.value;
+          const footprint = footprintSelect.value;
+          
+          if (formAcreage) formAcreage.value = scaleSelect.options[scaleSelect.selectedIndex].text;
+          if (formFinish) formFinish.value = materialsSelect.options[materialsSelect.selectedIndex].text;
+          if (formFootprint) formFootprint.value = footprintSelect.options[footprintSelect.selectedIndex].text;
+
+          let tier = "Curated Sanctuary";
+          let duration = "18 - 24 Months";
+          let description = "";
+
+          if (footprint === "pavilion") {
+            duration = "14 - 18 Months";
+            if (scale === "premium") {
+              tier = "Elite Pavilion";
+              description = `Your selection specifies an intimate ${scaleSelect.options[scaleSelect.selectedIndex].text} styled with ${materialsSelect.options[materialsSelect.selectedIndex].text}. We recommend our Stage-1 Design Consultation, specializing in low-profile, single-level structures blending perfectly with surrounding foothills.`;
+            } else {
+              tier = "Sublime Pavilion";
+              description = `A specialized pavilion format situated within a majestic acreage layout. Featuring a masterfully coordinated ${materialsSelect.options[materialsSelect.selectedIndex].text} framework, this design commands a specialized environmental contour scanning phase prior to architectural drafts.`;
+            }
+          } else if (footprint === "grand") {
+            duration = "20 - 24 Months";
+            tier = "Signature Legacy";
+            if (scale === "monolith") {
+              tier = "Monolith Legacy";
+              description = `A substantial, iconic structure mapped over deep mountain wilderness. Integrating ${materialsSelect.options[materialsSelect.selectedIndex].text} over substantial multi-acre spans results in a landmark estate. Recommends our Stage-2 Elite Consultation with advanced wind-channel profiling and light-vector plotting.`;
+            } else {
+              description = `Our signature format. A grand layout using ${materialsSelect.options[materialsSelect.selectedIndex].text} in the foothills of Calgary. Includes complete bespoke timber joinery integration and structural analysis to secure architectural permanence.`;
+            }
+          } else if (footprint === "imperial-sky") {
+            duration = "26 - 32 Months";
+            tier = "Legendary Monument";
+            if (materials === "imperial") {
+              tier = "Imperial Monument Sanctuary";
+              description = `The absolute pinnacle of architectural scale and material density. Pairing an Imperial footprint with Obsidian Concrete and Bookmatched Calacatta Marble creates an immortal estate. Includes complete bespoke metallurgy fabrication, advanced subterranean hydro-spa engineering, and lifetime design oversight.`;
+            } else {
+              description = `A vast structural estate crafted from high-end materials. Your choice of ${materialsSelect.options[materialsSelect.selectedIndex].text} demands deep, custom architectural detailing and dedicated engineering project teams.`;
+            }
+          }
+
+          if (tierRec) tierRec.textContent = tier;
+          if (timelineScope) timelineScope.textContent = duration;
+          if (summaryText) summaryText.textContent = description;
+        };
+
+        scaleSelect.addEventListener('change', recalculateScope);
+        materialsSelect.addEventListener('change', recalculateScope);
+        footprintSelect.addEventListener('change', recalculateScope);
+
+        recalculateScope();
+      }
+
+    });
+  </script>
+
+</Layout>
